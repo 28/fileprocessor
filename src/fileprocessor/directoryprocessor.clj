@@ -6,7 +6,5 @@
 (defn print-files-in-directory
   ""
   [directory-path file-type]
-  (doseq [f (rest (file-seq (file directory-path)))]
-    (if
-        (= (get-file-type f) file-type)
-      f)))
+  (filter #(= (type-of-file %) file-type)
+    (file-seq (file directory-path))))
