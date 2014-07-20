@@ -4,7 +4,7 @@
         fileprocessor.processor))
 
 (defn print-files-in-directory
-  ""
-  [directory-path file-type]
-  (filter #(= (type-of-file %) file-type)
-    (file-seq (file directory-path))))
+  "File types must be a set for now"
+  [directory-path file-types]
+  (filter  #(contains? file-types (type-of-file %))
+    (rest (file-seq (file directory-path)))))
