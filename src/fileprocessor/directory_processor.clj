@@ -1,4 +1,4 @@
-(ns fileprocessor.directoryprocessor
+(ns fileprocessor.directory_processor
   (:use (clojure.java [io :only (file)])
         (clojure [pprint :only (pprint)])
         fileprocessor.processor))

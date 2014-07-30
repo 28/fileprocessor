@@ -1,4 +1,4 @@
-(ns fileprocessor.processor
+(ns fileprocessor.raw_file_processor
   (:use (clojure [string :only (replace)])
         (clojure.java [io :only (file writer)]))
   (:refer-clojure :exclude [replace])
