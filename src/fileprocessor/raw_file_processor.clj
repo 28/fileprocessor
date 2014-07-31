@@ -7,9 +7,10 @@
 (def files-processed (atom 0))
 
 (defn type-of-file
-  "Returns the type of the file as extention with dot(.)."
+  "Returns the type of the file as extention with dot(Example: .txt)."
   [^File file]
-  (subs (.getName file) (.indexOf (.getName file) ".")))
+  (let [file-name (.getName file)]
+  (subs file-name (.indexOf file-name "."))))
 
 (defn replace-text-with-regex
   ""
