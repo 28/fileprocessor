@@ -1,7 +1,7 @@
-(ns fileprocessor.directory_processor
+(ns fileprocessor.directory-processor
   (:use (clojure.java [io :only (file)])
         (clojure [pprint :only (pprint)])
-        fileprocessor.processor))
+        fileprocessor.raw-file-processor))
 
 (defn files-in-directory
   "File types must be a set for now"

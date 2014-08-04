@@ -1,8 +1,8 @@
-(ns fileprocessor.raw_file_processor
+(ns fileprocessor.raw-file-processor
   (:use (clojure [string :only (replace)])
         (clojure.java [io :only (file writer)]))
   (:refer-clojure :exclude [replace])
-  (:import [java.io.File]))
+  (:import (java.io File)))
 
 (def files-processed (atom 0))
 
