@@ -1,7 +1,7 @@
 (ns fileprocessor.directory-processor
   (:use (clojure.java [io :only (file)])
         (clojure [pprint :only (pprint)])
-        fileprocessor.raw-file-processor))
+        fileprocessor.utils))
 
 (def testdir "C:\\Users\\Dejan Josifovic\\IdeaProjects\\fileprocessor\\test\\resources")
 

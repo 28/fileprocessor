@@ -6,12 +6,6 @@
 
 (def files-processed (atom 0))
 
-(defn type-of-file
-  "Returns the type of the file as extention with dot(Example: .txt)."
-  [^File file]
-  (let [file-name (.getName file)]
-  (subs file-name (.indexOf file-name "."))))
-
 (defn replace-text-with-regex
   ""
   [^String directory-path  ^String file-type  ^String regex ^String new-regex]
