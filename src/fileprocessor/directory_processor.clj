@@ -3,8 +3,11 @@
         (clojure [pprint :only (pprint)])
         fileprocessor.raw-file-processor))
 
+(def testdir "C:\\Users\\Dejan Josifovic\\IdeaProjects\\fileprocessor\\test\\resources")
+
 (defn files-in-directory
-  "File types must be a set for now"
-  [directory-path file-types]
-  (filter  #(contains? file-types (type-of-file %))
+  ""
+  [directory-path & file-types]
+  (filter (partial (fn [coll f]
+               (some #(= (type-of-file f) % ) coll)) file-types)
     (rest (file-seq (file directory-path)))))
