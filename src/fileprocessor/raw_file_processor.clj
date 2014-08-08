@@ -1,46 +1,24 @@
 (ns fileprocessor.raw-file-processor
   (:use (clojure [string :only (replace)])
-        (clojure.java [io :only (file writer)]))
-  (:refer-clojure :exclude [replace])
-  (:import (java.io File)))
+        (clojure.java [io :only (file writer)])
+        fileprocessor.directory-processor)
+  (:refer-clojure :exclude [replace]))
 
+;; Represents the number of files processed by the last function called.
 (def files-processed (atom 0))
 
-(defn replace-text-with-regex
-  ""
-  [^String directory-path  ^String file-type  ^String regex ^String new-regex]
+(defn replace-text-in-files
+  "Traverses through the given directory and replaces the targeted text with the
+   given text. Function looks only in files that are of the type/s from the passed
+   collection. File types must be in form like this '.example'. Returns the number
+   of files processed. Can also take regular expresion patterns for both old and new
+   values(see clojure.string/replace)."
+  [directory-path old-pattern new-pattern file-types]
   (reset! files-processed 0)
-  (if
-      (or
-       (nil? directory-path)
-       (not (.isDirectory (file directory-path)))
-       (nil? regex)
-       (nil? new-regex))
-    (throw (IllegalArgumentException. "Illegal directory or text.")))
-	(doseq
-      [f (rest (file-seq (file directory-path)))]
-      (let [fs (slurp f)
-            fsr (replace fs (re-pattern regex) new-regex)]
-        (with-open [o (writer f :append false)]
-          (.write o fsr))
-        (swap! files-processed inc)))
-  @files-processed)
-
-(defn replace-text-with-text
-  ""
-  [^String directory-path  ^String file-type  ^String old-text ^String new-text]
-  (reset! files-processed 0)
-  (if
-    (or
-      (nil? directory-path)
-      (not (.isDirectory (file directory-path)))
-      (nil? old-text)
-      (nil? new-text))
-    (throw (IllegalArgumentException. "Illegal directory or text.")))
   (doseq
-    [f (rest (file-seq (file directory-path)))]
+    [f (apply (partial files-in-directory directory-path) file-types)]
     (let [fs (slurp f)
-          fsr (replace fs old-text new-text)]
+          fsr (replace fs old-pattern new-pattern)]
       (if (not= fs fsr)
         (with-open [o (writer f :append false)]
         (.write o fsr)
