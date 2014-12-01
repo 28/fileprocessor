@@ -14,4 +14,4 @@ Download the code and use it like that or compile it and use it as a library.
 
 Distributed under the Eclipse Public License, the same as Clojure.
 
-Copyright &copy; fileprocessor 2014.
+Copyright &copy; Dejan Josifović 2014.
