@@ -4,5 +4,6 @@
                 of various files and file types."
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :plugins [[lein-cljfmt "0.1.10"]]
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [enlive "1.1.5"]])
