@@ -16,11 +16,11 @@
   [directory-path old-pattern new-pattern file-types]
   (reset! files-processed 0)
   (doseq
-    [f (apply (partial files-in-directory directory-path) file-types)]
+   [f (apply (partial files-in-directory directory-path) file-types)]
     (let [fs (slurp f)
           fsr (replace fs old-pattern new-pattern)]
       (if (not= fs fsr)
         (with-open [o (writer f :append false)]
-        (.write o fsr)
+          (.write o fsr)
           (swap! files-processed inc)))))
   @files-processed)

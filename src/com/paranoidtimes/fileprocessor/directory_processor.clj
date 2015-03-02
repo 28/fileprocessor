@@ -8,6 +8,6 @@
    a filtered lazy seq with files of the passed type/types."
   ([directory-path] (rest (file-seq (file directory-path))))
   ([directory-path & file-types]
-  (filter (partial (fn [coll f]
-               (some #(= (type-of-file f) % ) coll)) file-types)
-    (rest (file-seq (file directory-path))))))
+   (filter (partial (fn [coll f]
+                      (some #(= (type-of-file f) %) coll)) file-types)
+           (rest (file-seq (file directory-path))))))
