@@ -1,4 +1,4 @@
-(ns fileprocessor.raw-file-processor
+(ns com.paranoidtimes.fileprocessor.raw-file-processor
   (:use (clojure [string :only (replace)])
         (clojure.java [io :only (file writer)])
         fileprocessor.directory-processor)

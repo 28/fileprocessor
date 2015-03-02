@@ -1,4 +1,4 @@
-(ns fileprocessor.directory-processor
+(ns com.paranoidtimes.fileprocessor.directory-processor
   (:use (clojure.java [io :only (file)])
         fileprocessor.utils))
 
