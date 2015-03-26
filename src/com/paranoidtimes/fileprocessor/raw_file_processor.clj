@@ -1,8 +1,7 @@
 (ns com.paranoidtimes.fileprocessor.raw-file-processor
-  (:use (clojure [string :only (replace)])
-        (clojure.java [io :only (file writer)])
+  (:use (clojure.java [io :only (file writer)])
         fileprocessor.directory-processor)
-  (:refer-clojure :exclude [replace]))
+  (:require [clojure.string :as st]))
 
 ;; Represents the number of files processed by the last function called.
 (def files-processed (atom 0))
@@ -18,7 +17,7 @@
   (doseq
    [f (apply (partial files-in-directory directory-path) file-types)]
     (let [fs (slurp f)
-          fsr (replace fs old-pattern new-pattern)]
+          fsr (st/replace fs old-pattern new-pattern)]
       (if (not= fs fsr)
         (with-open [o (writer f :append false)]
           (.write o fsr)
