@@ -15,9 +15,9 @@ Download the code and use it like that or compile it and use it as a library.
 The idea for the assert_select function in `html.clj` namespace came from Ruby on Rails.
 See:
 
-*[Rails API](http://apidock.com/rails/ActionDispatch/Assertions/SelectorAssertions/assert_select)
+* [Rails API](http://apidock.com/rails/ActionDispatch/Assertions/SelectorAssertions/assert_select)
 
-*[Source](https://github.com/rails/rails-dom-testing/blob/0500ae5593a0fa79bb8052ae1c4474960a81440c/lib/rails/dom/testing/assertions/selector_assertions.rb)
+* [Source](https://github.com/rails/rails-dom-testing/blob/0500ae5593a0fa79bb8052ae1c4474960a81440c/lib/rails/dom/testing/assertions/selector_assertions.rb)
 
 ## Licence
 
