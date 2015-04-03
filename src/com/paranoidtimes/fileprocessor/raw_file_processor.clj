@@ -1,6 +1,6 @@
 (ns com.paranoidtimes.fileprocessor.raw-file-processor
   (:use (clojure.java [io :only (file writer)])
-        fileprocessor.directory-processor)
+        com.paranoidtimes.fileprocessor.directory-processor)
   (:require [clojure.string :as st]))
 
 ;; Represents the number of files processed by the last function called.
