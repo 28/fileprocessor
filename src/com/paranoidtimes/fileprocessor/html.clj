@@ -18,3 +18,10 @@
   ""
   [html node content]
   (assert-select html node #(= % content)))
+
+
+(def test-html "<html><head></head><body><h1 class='TestClass'>TestHeading</h1><p>Para1</p><p>Para2</p></body></html>")
+
+(-> (h/select (h/html-resource (java.io.StringReader. test-html)) (vector (keyword "p"))) first :content)
+
+(clojure.repl/doc h/html-resource)
