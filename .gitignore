@@ -10,3 +10,7 @@ pom.xml.asc
 /.idea
 *.iml
 resources/
+.settings/
+bin/
+.project
+.classpath

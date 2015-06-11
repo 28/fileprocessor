@@ -8,6 +8,6 @@
   (let [file-name (.getName f)
         index (.lastIndexOf file-name ".")]
     (if
-      (neg? index)
+     (neg? index)
       nil
       (subs file-name index))))
