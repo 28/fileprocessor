@@ -12,9 +12,14 @@
   [html node function & flags]
   (let [res (h/html-resource (java.io.StringReader. html))
         flags (set flags)]
-    (apply function (-> (h/select res (to-enlive-selector node)) first :content))))
+    (map function (-> (h/select res (to-enlive-selector node))))))
 
 (defn assert-select-content
   ""
   [html node content]
-  (assert-select html node #(= % content)))
+  (assert-select html node #(= (first (:content %)) content)))
+
+(defn assert-select-first-content
+  ""
+  [html node content]
+  (assert-select html node #(= (first (:content %)) content) :first))
