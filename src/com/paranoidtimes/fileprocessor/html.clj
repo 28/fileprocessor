@@ -7,12 +7,25 @@
   [selector]
   (vector (keyword selector)))
 
+(defn- first-n
+  ""
+  [value coll]
+  (take 
+   (if 
+    (nil? value) 
+     java.lang.Integer/MAX_VALUE 
+     value) coll))
+
+(defn get-tags
+  ""
+  [res node]
+  (-> (h/select res (to-enlive-selector node))))
+
 (defn assert-select
   ""
-  [html node function & flags]
-  (let [res (h/html-resource (java.io.StringReader. html))
-        flags (set flags)]
-    (map function (-> (h/select res (to-enlive-selector node))))))
+  [html node function & {:keys [first nth] :or {first nil}}]
+  (let [res (h/html-resource (java.io.StringReader. html))]
+    (map function (first-n first (get-tags res node)))))
 
 (defn assert-select-content
   ""
@@ -22,4 +35,4 @@
 (defn assert-select-first-content
   ""
   [html node content]
-  (assert-select html node #(= (first (:content %)) content) :first))
+  (assert-select html node #(= (first (:content %)) content) :first 1))
