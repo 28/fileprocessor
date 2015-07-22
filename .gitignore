@@ -9,7 +9,6 @@ pom.xml.asc
 /.nrepl-port
 /.idea
 *.iml
-resources/
 .settings/
 bin/
 .project
