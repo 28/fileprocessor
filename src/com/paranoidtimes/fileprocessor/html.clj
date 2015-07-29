@@ -16,6 +16,15 @@
      java.lang.Integer/MAX_VALUE 
      value) coll))
 
+(defmulti to-res
+  (fn [obj] (type obj)))
+
+(defmethod to-res java.lang.String [s]
+  (h/html-resource (java.io.StringReader. s)))
+
+(defmethod to-res java.io.File [f]
+  (h/html-resource f))
+
 (defn get-tags
   ""
   [res node]
@@ -24,7 +33,7 @@
 (defn assert-select
   ""
   [html node function & {:keys [first nth] :or {first nil}}]
-  (let [res (h/html-resource (java.io.StringReader. html))]
+  (let [res (to-res html)]
     (map function (first-n first (get-tags res node)))))
 
 (defn assert-select-content
