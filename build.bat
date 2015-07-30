@@ -1,1 +1,1 @@
-lein do clean, cljfmt fix, compile, test, jar
+lein do clean, compile, test, jar
