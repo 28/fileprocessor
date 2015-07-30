@@ -1,4 +1,4 @@
-(ns raw_file_processor_test
+(ns raw-file-processor-test
   (:require [clojure.test :refer :all] 
             [com.paranoidtimes.fileprocessor.raw-file-processor :refer :all]))
 
