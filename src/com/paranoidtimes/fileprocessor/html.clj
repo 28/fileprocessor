@@ -32,8 +32,7 @@
 (defn assert-select
   ""
   [html node function & {:keys [first nth] :or {first nil}}]
-  (let [res (to-res html)]
-    (map function (first-n first (get-tags res node)))))
+  (map function (first-n first (get-tags (to-res html) node))))
 
 (defn assert-select-content
   ""
