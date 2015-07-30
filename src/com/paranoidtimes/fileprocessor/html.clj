@@ -1,6 +1,5 @@
 (ns com.paranoidtimes.fileprocessor.html
-  (:require [net.cgrand.enlive-html :as h])
-  (:import [java.io.StringReader]))
+  (:require [net.cgrand.enlive-html :as h]))
 
 (defn- to-enlive-selector
   ""
