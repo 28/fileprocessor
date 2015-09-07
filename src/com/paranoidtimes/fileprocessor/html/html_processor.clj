@@ -1,4 +1,4 @@
-(ns com.paranoidtimes.fileprocessor.html
+(ns com.paranoidtimes.fileprocessor.html.html-processor
   (:require [net.cgrand.enlive-html :as h]))
 
 (defn- to-enlive-selector
@@ -31,22 +31,23 @@
 
 (defn assert-select
   ""
-  [html node function & {:keys [first nth] :or {first nil}}]
+  [html node function & {:keys [first n] :or {first nil}}]
   {:pre [(or 
-          (and (nil? first) (nil? nth))
-          (and (nil? first) (pos? nth))
-          (and (nil? nth) (pos? first)))]}
+          (and (nil? first) (nil? n))
+          (and (nil? first) (pos? n))
+          (and (nil? n) (pos? first)))]}
   (cond 
-    (nil? nth) (map function (first-n first (get-tags (to-res html) node)))
+    (nil? n)
+    (map function (first-n first (get-tags (to-res html) node)))
     :else
-    nil))
+    (apply function `(~(nth (get-tags (to-res html) node) (dec n))))))
 
 (defn assert-select-content
   ""
   [html node content]
   (assert-select html node #(= (first (:content %)) content)))
 
-(defn assert-select-first-content
+(defn assert-select-location-content
   ""
-  [html node content]
-  (assert-select html node #(= (first (:content %)) content) :first 1))
+  [html node content location]
+  (assert-select html node #(= (first (:content %)) content) :n location))
