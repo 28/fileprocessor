@@ -1,5 +1,5 @@
 (ns com.paranoidtimes.fileprocessor.html.html-assertion-helpers
-  (:require [com.paranoidtimes.fileprocessor.html.html :refer :all]))
+  (:require [com.paranoidtimes.fileprocessor.html.html-processor :refer :all]))
 
 (defn assert-node-content-is-equal
   ""
