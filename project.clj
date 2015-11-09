@@ -4,11 +4,11 @@
                 of various files and file types."
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :plugins [[lein-cljfmt "0.1.10"]]
+  :plugins [[lein-cljfmt "0.3.0"]]
   :profiles {:dev 
              {:source-paths ["dev"]}}
   :repl-options {:prompt (fn [ns] (str "[" ns "]$ "))}
   :aot [com.paranoidtimes.fileprocessor.html.html-assertion-helpers]
   :uberjar-name "fileprocessor-standalone-0.1.0.jar"
   :dependencies [[org.clojure/clojure "1.7.0"]
-[enlive "1.1.5"]])
+                 [enlive "1.1.5"]])
