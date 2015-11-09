@@ -1,1 +1,1 @@
-lein do clean, compile, test, jar
+lein do clean, compile, test, jar, uberjar
