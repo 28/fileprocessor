@@ -1,12 +1,21 @@
 (ns com.paranoidtimes.fileprocessor.html.html-assertion-helpers
   (:require [com.paranoidtimes.fileprocessor.html.html-processor :refer :all]))
 
+(gen-interface
+ :name "com.paranoidtimes.fileprocessor.NodeProcessingInstruction")
+
+(gen-interface
+ :name "com.paranoidtimes.fileprocessor.NodeContentProcessingInstruction"
+ :extends [com.paranoidtimes.fileprocessor.NodeProcessingInstruction]
+ :methods [[processNodeContent [String] Object]])
+
 (gen-class
  :name "com.paranoidtimes.fileprocessor.HtmlAssertion"
  :prefix "java-"
  :methods [^:static [assertNodeContentIsEqual [Object String String] boolean]
            ^:static [assertNthNodeContentIsEqual [Object String String Integer] boolean]
-           ^:static [assertNodeAttributeValue [Object String String String] boolean]])
+           ^:static [assertNodeAttributeValue [Object String String String] boolean]
+           ^:static [assertOnSpecificNodeContent [Object String Integer com.paranoidtimes.fileprocessor.NodeContentProcessingInstruction] Object]])
 
 ; Clojure
 
@@ -42,3 +51,8 @@
 (defn java-assertNodeAttributeValue
   [^Object html ^String node ^String attribute ^String value]
   (assert-node-attribute-value html node attribute value))
+
+(defn java-assertOnSpecificNodeContent
+  [^Object html ^String node ^Integer location ^com.paranoidtimes.fileprocessor.NodeContentProcessingInstruction instruction]
+  (assert-select html node 
+                 (fn [node] (.processNodeContent instruction (->> node :content first))) :n location))
