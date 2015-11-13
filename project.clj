@@ -7,7 +7,8 @@
   :plugins [[lein-cljfmt "0.3.0"]]
   :profiles {:dev 
              {:source-paths ["dev"]}}
-  :repl-options {:prompt (fn [ns] (str "[" ns "]$ "))}
+  :repl-options {:prompt (fn [ns] (str "[" ns "]$ "))
+                 :init-ns user}
   :aot [com.paranoidtimes.fileprocessor.html.html-assertion-helpers]
   :uberjar-name "fileprocessor-standalone-0.1.0.jar"
   :dependencies [[org.clojure/clojure "1.7.0"]
