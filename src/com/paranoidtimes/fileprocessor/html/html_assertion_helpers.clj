@@ -1,6 +1,8 @@
 (ns com.paranoidtimes.fileprocessor.html.html-assertion-helpers
   (:require [com.paranoidtimes.fileprocessor.html.html-processor :refer :all]))
 
+;; Java interfaces and classes to generate
+
 (gen-interface
  :name "com.paranoidtimes.fileprocessor.NodeProcessingInstruction")
 
@@ -17,7 +19,7 @@
            ^:static [assertNodeAttributeValue [Object String String String] boolean]
            ^:static [assertOnSpecificNodeContent [Object String Integer com.paranoidtimes.fileprocessor.NodeContentProcessingInstruction] Object]])
 
-; Clojure
+;; Clojure
 
 (defn assert-node-content-is-equal
   "Asserts if all selected nodes have the content
@@ -38,21 +40,25 @@
   (let [kwd (keyword attribute)]
     (assert-select html node #(= (->> % :attrs kwd) value))))
 
-; Java
+;; Java
 
 (defn java-assertNodeContentIsEqual
+  "Java interop assert-node-content-is-equal function wrapper."
   [^Object html ^String node ^String content]
   (assert-node-content-is-equal html node content))
 
 (defn java-assertNthNodeContentIsEqual
+  "Java interop assert-nth-node-content-is-equal function wrapper."
   [^Object html ^String node ^String content ^Integer location]
   (assert-nth-node-content-is-equal html node content location))
 
 (defn java-assertNodeAttributeValue
+  "Java interop assert-node-attribute-value function wrapper."
   [^Object html ^String node ^String attribute ^String value]
   (assert-node-attribute-value html node attribute value))
 
 (defn java-assertOnSpecificNodeContent
+  ""
   [^Object html ^String node ^Integer location ^com.paranoidtimes.fileprocessor.NodeContentProcessingInstruction instruction]
   (assert-select html node 
                  (fn [node] (.processNodeContent instruction (->> node :content first))) :n location))
