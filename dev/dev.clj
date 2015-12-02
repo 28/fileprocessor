@@ -8,7 +8,8 @@
             [com.paranoidtimes.fileprocessor.raw-file-processor :refer :all]
             [com.paranoidtimes.fileprocessor.html.html-processor :refer :all]
             [com.paranoidtimes.fileprocessor.html.html-assertion-helpers :refer :all]
-            [com.paranoidtimes.fileprocessor.html.html-utils :refer :all]))
+            [com.paranoidtimes.fileprocessor.html.html-utils :refer :all]
+            [com.paranoidtimes.fileprocessor.xml-processor :refer :all]))
 
 (defonce test-dir (file "test/resources"))
 (defonce test-html (file "test/resources/test.html"))
