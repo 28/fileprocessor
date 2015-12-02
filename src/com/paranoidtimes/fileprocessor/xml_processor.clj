@@ -1,4 +1,5 @@
 (ns com.paranoidtimes.fileprocessor.xml-processor
+  (:require [clojure.data.xml :as dxml])
   (:import (javax.xml XMLConstants)
            (javax.xml.transform Source)
            (javax.xml.transform.stream StreamSource)
@@ -12,3 +13,13 @@
       (. validator validate source-file)
       true
       (catch Exception e false))))
+
+(defn load-xml
+  [xml-file]
+  (dxml/parse (java.io.FileReader. xml-file)))
+
+(defn xml-map-to-file
+  [xml-map xml-file-name]
+  (with-open 
+   [fw (java.io.FileWriter. xml-file-name)]
+    (dxml/emit xml-map fw)))
