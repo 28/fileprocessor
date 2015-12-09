@@ -7,17 +7,17 @@ directories.
 ## Usage
 
 For directory processing use functions from
-```com.paranoidtimes.fileprocessor.directory-processor``` namespace.
+`com.paranoidtimes.fileprocessor.directory-processor` namespace.
 
 For raw/text file processing use functions from
-```com.paranoidtimes.fileprocessor.raw-file-processor``` namespace.
+`com.paranoidtimes.fileprocessor.raw-file-processor` namespace.
 
 For XML file processing use functions from
-```com.paranoidtimes.fileprocessor.xml-processor``` namespace.
+`com.paranoidtimes.fileprocessor.xml-processor` namespace.
 
 For HTML file processing use functions from
-```com.paranoidtimes.fileprocessor.html.html-processor``` and
-```com.paranoidtimes.fileprocessor.html.html-assertion-helpers```
+`com.paranoidtimes.fileprocessor.html.html-processor` and
+`com.paranoidtimes.fileprocessor.html.html-assertion-helpers`
 namespaces.
 
 In the later library has helper methods that provide Java interop that should feel
