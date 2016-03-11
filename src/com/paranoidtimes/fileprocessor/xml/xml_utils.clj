@@ -1,0 +1,12 @@
+(ns com.paranoidtimes.fileprocessor.xml.xml-utils
+  (:require [clojure.data.xml :as dxml]))
+
+(defn load-xml
+  [xml-file]
+  (dxml/parse (java.io.FileReader. xml-file)))
+
+(defn xml-map-to-file
+  [xml-map xml-file-name]
+  (with-open 
+   [fw (java.io.FileWriter. xml-file-name)]
+    (dxml/emit xml-map fw)))

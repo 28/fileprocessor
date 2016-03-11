@@ -28,8 +28,8 @@ used like any other Java 3rd party library
 
 ## Idea
 
-The idea for this library came up after compiling all the various functions
-that have been used for various task and  that lying around the work space. The Java
+The idea for this library came up after compiling all the various scripts
+that have been used for various task and that were lying around the work space. The Java
 interop part came from the request to use this library's HTML assertion methods from
 Java code without even knowing that the jar is actually a Clojure jar.
 

@@ -3,7 +3,7 @@
   (:require [clojure.string :as st]
             [com.paranoidtimes.fileprocessor.directory-processor :refer :all]))
 
-;; Represents the number of files processed by the last function called.
+;; Represents the number of files processed by the last replace-text-in-files call.
 (def files-processed (atom 0))
 
 (defn replace-text-in-files
@@ -23,3 +23,20 @@
           (.write o fsr)
           (swap! files-processed inc)))))
   @files-processed)
+
+(defn generate-files-from-names-list
+  "Generates as many files as there are lines in name-list file. Names are
+   decorated by passed decorator-fn. This function must accept only one arg and
+   return a String representing the name of the individual file. Init-text for all
+   files can be provided."
+  [name-list decorator-fn init-text]
+  (with-open [reader (clojure.java.io/reader name-list)]
+	(let [lines (line-seq reader)]
+    (doall (map #(spit (decorator-fn %) init-text) lines)))))
+
+(defn generate-n-files
+  "Generates n files with prefix + index as name and with passed
+   init text."
+  [n prefix init-text]
+  (for [i (range 0 n)]
+    (spit (str prefix i) init-text)))

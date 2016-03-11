@@ -11,6 +11,6 @@
                  :init-ns dev}
   :aot [com.paranoidtimes.fileprocessor.html.html-assertion-helpers]
   :uberjar-name "fileprocessor-standalone-0.1.0.jar"
-  :dependencies [[org.clojure/clojure "1.7.0"]
+  :dependencies [[org.clojure/clojure "1.8.0"]
                  [enlive "1.1.5"]
                  [org.clojure/data.xml "0.0.8"]])

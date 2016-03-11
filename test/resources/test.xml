@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<headtag1>
+	<tag1 arttag1="hello">
+		<tag2 />
+	</tag1>
+	<tag1 arttag1="hello">
+		<tag2 />
+	</tag1>
+</headtag1>
