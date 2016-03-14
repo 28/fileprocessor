@@ -6,6 +6,8 @@
            (javax.xml.validation Schema SchemaFactory Validator)))
 
 (defn validate-xml-against-xsd
+  "Validates given XML to given XSD schema, returns true if XML is valid,
+   false otherwise."
   [^java.io.File xml-file ^java.io.File xsd-file]
   (let [source-file (StreamSource. xml-file)
         validator (. (. (SchemaFactory/newInstance XMLConstants/W3C_XML_SCHEMA_NS_URI) newSchema xsd-file) newValidator)]
@@ -14,8 +16,9 @@
       true
       (catch Exception e false))))
 
-;; Work in progress
+;; Work in progress...
 #_(defn assoc-to-element
+   ""
     [xml-map location new-name new-value]
     (map #(update-in % [location]
                      (fn [arg]
