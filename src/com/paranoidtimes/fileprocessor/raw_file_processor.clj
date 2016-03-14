@@ -31,8 +31,8 @@
    files can be provided."
   [name-list decorator-fn init-text]
   (with-open [reader (clojure.java.io/reader name-list)]
-	(let [lines (line-seq reader)]
-    (doall (map #(spit (decorator-fn %) init-text) lines)))))
+    (let [lines (line-seq reader)]
+      (doall (map #(spit (decorator-fn %) init-text) lines)))))
 
 (defn generate-n-files
   "Generates n files with prefix + index as name and with passed

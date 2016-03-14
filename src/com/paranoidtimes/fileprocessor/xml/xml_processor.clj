@@ -16,11 +16,11 @@
       true
       (catch Exception e false))))
 
-;; Work in progress...
-#_(defn assoc-to-element
-   ""
-    [xml-map location new-name new-value]
-    (map #(update-in % [location]
-                     (fn [arg]
-                       (into {} (sort compare (merge {new-name new-value} arg)))))
-         xml-map))
+(defn assoc-to-element-attrs
+  "Assoc-es new attribute tag and value to child elements of the root element of the XML
+  passed."
+  [xml-map location new-name new-value]
+  (map #(update-in % [location]
+                   (fn [arg]
+                     (into {} (sort compare (merge {new-name new-value} arg)))))
+       (:content xml-map)))
