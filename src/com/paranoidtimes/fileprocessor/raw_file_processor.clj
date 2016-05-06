@@ -7,15 +7,15 @@
 (def files-processed (atom 0))
 
 (defn replace-text-in-files
-  "Traverses through the given directory and replaces the targeted text with the
-   given text. Function looks only in files that are of the type/s from the passed
+  "Traverses through the given directory and replaces the targeted text in files with
+   the given text. Function looks only in files that are of the type/s from the passed
    collection. File types must be in form like this '.example'. Returns the number
    of files processed. Can also take regular expresion patterns for both old and new
-   values(see clojure.string/replace)."
+   values (see clojure.string/replace)."
   [directory-path old-pattern new-pattern file-types]
   (reset! files-processed 0)
   (doseq
-   [f (apply (partial files-in-directory directory-path) file-types)]
+    [f (apply (partial files-in-directory directory-path) file-types)]
     (let [fs (slurp f)
           fsr (st/replace fs old-pattern new-pattern)]
       (if (not= fs fsr)
@@ -23,6 +23,12 @@
           (.write o fsr)
           (swap! files-processed inc)))))
   @files-processed)
+
+(defn replace-whole-text-in-files
+  "Traverses through the given directory and replaces all the text in files with the
+   given text."
+  [directory-path new-pattern file-types]
+  (replace-text-in-files directory-path #"(?is)^.*$" new-pattern file-types))
 
 (defn generate-files-from-names-list
   "Generates as many files as there are lines in name-list file. Names are
