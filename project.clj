@@ -1,5 +1,5 @@
 (defproject filer "0.1.0"
-  :url "www.github.com/28/filer"
+  :url "https://github.com/theparanoidtimes/filer"
   :description "The idea of the filer project is to do batch processing
                 of various files and file types."
   :license {:name "Eclipse Public License"
