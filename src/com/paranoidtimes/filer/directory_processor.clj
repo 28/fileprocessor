@@ -1,6 +1,6 @@
-(ns com.paranoidtimes.fileprocessor.directory-processor
+(ns com.paranoidtimes.filer.directory-processor
   (:use (clojure.java [io :only (file)])
-        com.paranoidtimes.fileprocessor.utils))
+        com.paranoidtimes.filer.utils))
 
 (defn files-in-directory
   "Returns a lazy seq of all files in given directory. It also can take a variable string

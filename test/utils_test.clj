@@ -1,6 +1,6 @@
 (ns utils-test
   (:require [clojure.test :refer :all]
-            [com.paranoidtimes.fileprocessor.utils :refer :all])
+            [com.paranoidtimes.filer.utils :refer :all])
   (:import [java.io File]))
 
 (deftest test-file-type-extraction

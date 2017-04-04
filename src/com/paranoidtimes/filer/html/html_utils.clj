@@ -1,4 +1,4 @@
-(ns com.paranoidtimes.fileprocessor.html.html-utils
+(ns com.paranoidtimes.filer.html.html-utils
   (:require [net.cgrand.enlive-html :as h]
             [clojure.string :as s])
   (:import (java.io StringReader)))

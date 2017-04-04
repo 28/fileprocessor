@@ -1,4 +1,4 @@
-# fileprocessor
+# filer
 
 The main motivation for this library is to have various file processing functionalities
 in one place. Word "file" means HTML, XML, text or any other file type. It also means
@@ -7,17 +7,17 @@ directories.
 ## Usage
 
 For directory processing use functions from
-`com.paranoidtimes.fileprocessor.directory-processor` namespace.
+`com.paranoidtimes.filer.directory-processor` namespace.
 
 For raw/text file processing use functions from
-`com.paranoidtimes.fileprocessor.raw-file-processor` namespace.
+`com.paranoidtimes.filer.raw-file-processor` namespace.
 
 For XML file processing use functions from
-`com.paranoidtimes.fileprocessor.xml-processor` namespace.
+`com.paranoidtimes.filer.xml-processor` namespace.
 
 For HTML file processing use functions from
-`com.paranoidtimes.fileprocessor.html.html-processor` and
-`com.paranoidtimes.fileprocessor.html.html-assertion-helpers`
+`com.paranoidtimes.filer.html.html-processor` and
+`com.paranoidtimes.filer.html.html-assertion-helpers`
 namespaces.
 
 In the later library has helper methods that provide Java interop that should feel
