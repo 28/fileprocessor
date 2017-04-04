@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <headtag1>
-	<tag1 arttag1="hello1">
-		<tag2 />
-	</tag1>
-	<tag1 arttag1="hello2">
-		<tag2 />
-	</tag1>
-	<tag1 arttag1="hello3">
-		<tag2 />
-	</tag1>
-	<tag1 arttag1="hello4">
-		<tag2 />
-		<tag3>
-			<tag4 />
-		</tag3>
-	</tag1>
+    <tag1 arttag1="hello1">
+        <tag2/>
+    </tag1>
+    <tag1 arttag1="hello2">
+        <tag2/>
+    </tag1>
+    <tag1 arttag1="hello3">
+        <tag2/>
+    </tag1>
+    <tag1 arttag1="hello4">
+        <tag2/>
+        <tag3>
+            <tag4/>
+        </tag3>
+    </tag1>
 </headtag1>

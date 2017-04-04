@@ -9,6 +9,6 @@
 (defn xml-map-to-file
   "Spits xml tree map to file."
   [xml-map xml-file-name]
-  (with-open 
-   [fw (java.io.FileWriter. xml-file-name)]
+  (with-open
+    [fw (java.io.FileWriter. xml-file-name)]
     (dxml/emit xml-map fw)))

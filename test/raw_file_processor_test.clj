@@ -1,5 +1,5 @@
 (ns raw-file-processor-test
-  (:require [clojure.test :refer :all] 
+  (:require [clojure.test :refer :all]
             [com.paranoidtimes.fileprocessor.raw-file-processor :refer :all]))
 
 (deftest raw-file-processor-test

@@ -9,7 +9,7 @@
   (let [file-name (.getName f)
         index (.lastIndexOf file-name ".")]
     (if
-     (neg? index)
+      (neg? index)
       nil
       (subs file-name index))))
 
@@ -18,8 +18,8 @@
    that much elements. This is not true for collections with more elements
    than Long/MAX_VALUE and infinite collections."
   [value coll]
-  (take 
-   (if 
-    (nil? value) 
-     java.lang.Long/MAX_VALUE 
-     value) coll))
+  (take
+    (if
+      (nil? value)
+      Long/MAX_VALUE
+      value) coll))
