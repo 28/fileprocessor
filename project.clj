@@ -2,8 +2,8 @@
   :url "https://github.com/theparanoidtimes/filer"
   :description "The idea of the filer project is to do batch processing
                 of various files and file types."
-  :license {:name "Eclipse Public License"
-            :url  "http://www.eclipse.org/legal/epl-v10.html"}
+  :license {:name "The MIT License"
+            :url  "https://opensource.org/licenses/MIT"}
   :plugins [[lein-cljfmt "0.3.0"]]
   :profiles {:dev
              {:source-paths ["dev"]}}
