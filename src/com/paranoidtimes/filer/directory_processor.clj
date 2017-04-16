@@ -11,3 +11,8 @@
    (filter (partial (fn [coll f]
                       (some #(= (file-type f) %) coll)) file-types)
            (rest (file-seq (file directory-path))))))
+
+(defn generate-n-directories
+  [n prefix]
+  (for [i (range 0 n)]
+    (.mkdir (file (str prefix i)))))
