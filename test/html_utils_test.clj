@@ -1,6 +1,6 @@
 (ns html_utils_test
   (:require [clojure.test :refer :all]
-            [com.paranoidtimes.filer.html.html-utils :refer :all]))
+            [org.theparanoidtimes.filer.html.html-utils :refer :all]))
 
 (deftest test-to-enlive-selector
   (testing "function-returns-enlive-selector-for-one-tag"

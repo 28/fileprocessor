@@ -1,4 +1,4 @@
-(ns com.paranoidtimes.filer.xml.xml-utils
+(ns org.theparanoidtimes.filer.xml.xml-utils
   (:require [clojure.data.xml :as dxml]))
 
 (defn load-xml

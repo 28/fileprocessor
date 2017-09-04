@@ -1,7 +1,7 @@
-(ns com.paranoidtimes.filer.raw-file-processor
+(ns org.theparanoidtimes.filer.raw-file-processor
   (:use (clojure.java [io :only (file writer)]))
   (:require [clojure.string :as st]
-            [com.paranoidtimes.filer.directory-processor :refer :all]))
+            [org.theparanoidtimes.filer.directory-processor :refer :all]))
 
 ;; Represents the number of files processed by the last replace-text-in-files call.
 (def files-processed (atom 0))

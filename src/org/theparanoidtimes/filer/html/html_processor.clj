@@ -1,7 +1,7 @@
-(ns com.paranoidtimes.filer.html.html-processor
+(ns org.theparanoidtimes.filer.html.html-processor
   (:require [net.cgrand.enlive-html :as h]
-            [com.paranoidtimes.filer.utils :refer :all]
-            [com.paranoidtimes.filer.html.html-utils :refer :all]))
+            [org.theparanoidtimes.filer.utils :refer :all]
+            [org.theparanoidtimes.filer.html.html-utils :refer :all]))
 
 (defn get-tags
   "Returns a map of tags for the node specified from the resource."

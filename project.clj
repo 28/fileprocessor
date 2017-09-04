@@ -9,7 +9,7 @@
              {:source-paths ["dev"]}}
   :repl-options {:prompt  (fn [ns] (str "[" ns "] $ "))
                  :init-ns dev}
-  :aot [com.paranoidtimes.filer.html.html-assertion-helpers]
+  :aot [org.theparanoidtimes.filer.html.html-assertion-helpers]
   :uberjar-name "filer-standalone-0.1.0.jar"
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [enlive "1.1.5"]

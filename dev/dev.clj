@@ -3,14 +3,14 @@
             [clojure.pprint :refer (pprint)]
             [clojure.java.io :refer :all]
             [clojure.string :as s]
-            [com.paranoidtimes.filer.utils :refer :all]
-            [com.paranoidtimes.filer.directory-processor :refer :all]
-            [com.paranoidtimes.filer.raw-file-processor :refer :all]
-            [com.paranoidtimes.filer.html.html-processor :refer :all]
-            [com.paranoidtimes.filer.html.html-assertion-helpers :refer :all]
-            [com.paranoidtimes.filer.html.html-utils :refer :all]
-            [com.paranoidtimes.filer.xml.xml-processor :refer :all]
-            [com.paranoidtimes.filer.xml.xml-utils :refer :all]))
+            [org.theparanoidtimes.filer.utils :refer :all]
+            [org.theparanoidtimes.filer.directory-processor :refer :all]
+            [org.theparanoidtimes.filer.raw-file-processor :refer :all]
+            [org.theparanoidtimes.filer.html.html-processor :refer :all]
+            [org.theparanoidtimes.filer.html.html-assertion-helpers :refer :all]
+            [org.theparanoidtimes.filer.html.html-utils :refer :all]
+            [org.theparanoidtimes.filer.xml.xml-processor :refer :all]
+            [org.theparanoidtimes.filer.xml.xml-utils :refer :all]))
 
 (defonce test-dir (file "test/resources"))
 (defonce test-html (file "test/resources/test.html"))

@@ -1,6 +1,6 @@
 (ns directory-processor-test
   (:require [clojure.test :refer :all]
-            [com.paranoidtimes.filer.directory-processor :refer :all]))
+            [org.theparanoidtimes.filer.directory-processor :refer :all]))
 
 (defonce test-dir "./test/resources")
 

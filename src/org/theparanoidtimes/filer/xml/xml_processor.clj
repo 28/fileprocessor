@@ -1,5 +1,5 @@
-(ns com.paranoidtimes.filer.xml.xml-processor
-  (:require [com.paranoidtimes.filer.xml.xml-utils :refer :all])
+(ns org.theparanoidtimes.filer.xml.xml-processor
+  (:require [org.theparanoidtimes.filer.xml.xml-utils :refer :all])
   (:import (javax.xml XMLConstants)
            (javax.xml.transform Source)
            (javax.xml.transform.stream StreamSource)

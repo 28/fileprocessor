@@ -7,17 +7,17 @@ directories.
 ## Usage
 
 For directory processing use functions from
-`com.paranoidtimes.filer.directory-processor` namespace.
+`org.theparanoidtimes.filer.directory-processor` namespace.
 
 For raw/text file processing use functions from
-`com.paranoidtimes.filer.raw-file-processor` namespace.
+`org.theparanoidtimes.filer.raw-file-processor` namespace.
 
 For XML file processing use functions from
-`com.paranoidtimes.filer.xml-processor` namespace.
+`org.theparanoidtimes.filer.xml-processor` namespace.
 
 For HTML file processing use functions from
-`com.paranoidtimes.filer.html.html-processor` and
-`com.paranoidtimes.filer.html.html-assertion-helpers`
+`org.theparanoidtimes.filer.html.html-processor` and
+`org.theparanoidtimes.filer.html.html-assertion-helpers`
 namespaces.
 
 In the later library has helper methods that provide Java interop that should feel
@@ -48,7 +48,7 @@ and
 
 MIT License
 
-Copyright (c) 2014 Dejan Josifović
+Copyright (c) 2014 Dejan Josifović, the paranoid times
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,6 +1,6 @@
 (ns raw-file-processor-test
   (:require [clojure.test :refer :all]
-            [com.paranoidtimes.filer.raw-file-processor :refer :all]))
+            [org.theparanoidtimes.filer.raw-file-processor :refer :all]))
 
 (deftest raw-file-processor-test
   (testing "raw file processor will change contents of the file"

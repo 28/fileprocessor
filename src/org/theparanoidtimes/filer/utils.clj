@@ -1,4 +1,4 @@
-(ns com.paranoidtimes.filer.utils
+(ns org.theparanoidtimes.filer.utils
   (:import (java.io File)))
 
 (defn file-type
