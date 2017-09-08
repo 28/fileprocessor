@@ -1,34 +1,41 @@
 (ns org.theparanoidtimes.filer.raw-file-processor
-  (:use (clojure.java [io :only (file writer)]))
   (:require [clojure.string :as st]
-            [org.theparanoidtimes.filer.directory-processor :refer :all]))
+            [org.theparanoidtimes.filer.directory-processor :as dir]
+            [clojure.java.io :as io]))
 
-;; Represents the number of files processed by the last replace-text-in-files call.
-(def files-processed (atom 0))
+(defn replace-text-in-file
+  ""
+  [f old-pattern new-pattern]
+  (let [fs (slurp f)
+        fr (st/replace fs old-pattern new-pattern)]
+    (when (not= fs fr)
+      (with-open [out (io/writer f :append false)]
+        (.write out fr)))))
 
 (defn replace-text-in-files
-  "Traverses through the given directory and replaces the targeted text in files with
-   the given text. Function looks only in files that are of the type/s from the passed
-   collection. File types must be in form like this '.example'. Returns the number
-   of files processed. Can also take regular expresion patterns for both old and new
+  "Traverses through the given directory and replaces
+   the targeted text in files with the given text.
+   Function looks only in files that are of the type/s
+   from the passed collection. File types must be in form
+   like this '.example'. Returns the number of files processed.
+   Can also take regular expresion patterns for both old and new
    values (see clojure.string/replace)."
-  [directory-path old-pattern new-pattern file-types]
-  (reset! files-processed 0)
-  (doseq
-      [f (apply (partial files-in-directory directory-path) file-types)]
-    (let [fs (slurp f)
-          fsr (st/replace fs old-pattern new-pattern)]
-      (if (not= fs fsr)
-        (with-open [o (writer f :append false)]
-          (.write o fsr)
-          (swap! files-processed inc)))))
-  @files-processed)
+  [directory-path old-pattern new-pattern & file-types]
+  (doseq [f (dir/files-in-directory directory-path file-types)]
+    (replace-text-in-file f old-pattern new-pattern)))
+
+(defn replace-whole-text-in-file
+  ""
+  [f new-pattern]
+  (replace-text-in-file f #"(?is)^.*$" new-pattern))
 
 (defn replace-whole-text-in-files
-  "Traverses through the given directory and replaces all the text in files with the
+  "Traverses through the given directory and
+   replaces all the text in files with the
    given text."
-  [directory-path new-pattern file-types]
-  (replace-text-in-files directory-path #"(?is)^.*$" new-pattern file-types))
+  [directory-path new-pattern & file-types]
+  (doseq [f (dir/files-in-directory directory-path file-types)]
+    (replace-whole-text-in-file f new-pattern)))
 
 (defn generate-files-from-names-list
   "Generates as many files as there are lines in name-list file.
@@ -42,7 +49,7 @@
 
 (defn generate-n-files
   "Generates n files with '<prefix><index>' as name and with
-   provided initial text."
-  [prefix n init-text]
+   provided initial text. Index begins at 0."
+  [prefix n extension init-text]
   (doseq [i (range 0 n)]
-    (spit (str prefix i) init-text)))
+    (spit (str prefix i extension) init-text)))

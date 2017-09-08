@@ -8,8 +8,7 @@
   [^File f]
   (let [file-name (.getName f)
         index (.lastIndexOf file-name ".")]
-    (if
-      (neg? index)
+    (if (neg? index)
       nil
       (subs file-name index))))
 
@@ -19,7 +18,6 @@
    than Long/MAX_VALUE and infinite collections."
   [value coll]
   (take
-    (if
-      (nil? value)
-      Long/MAX_VALUE
-      value) coll))
+   (if (nil? value)
+     Long/MAX_VALUE
+     value) coll))
