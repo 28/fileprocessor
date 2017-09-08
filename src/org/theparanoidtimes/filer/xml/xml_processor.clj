@@ -10,9 +10,11 @@
    false otherwise."
   [^java.io.File xml-file ^java.io.File xsd-file]
   (let [source-file (StreamSource. xml-file)
-        validator (. (. (SchemaFactory/newInstance XMLConstants/W3C_XML_SCHEMA_NS_URI) newSchema xsd-file) newValidator)]
+        schema-factory (SchemaFactory/newInstance XMLConstants/W3C_XML_SCHEMA_NS_URI)
+        schema (.newSchema schema-factory xsd-file)
+        validator (.newValidator schema)]
     (try
-      (. validator validate source-file)
+      (.validate validator source-file)
       true
       (catch Exception e false))))
 

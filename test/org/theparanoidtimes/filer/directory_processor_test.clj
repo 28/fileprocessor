@@ -10,7 +10,7 @@
   (testing "files-in-directory returns all files in dir"
     (is (tu/file-seq-contains-by-name "test.html" (files-in-directory tu/test-resources-dir)))
     (is (tu/file-seq-contains-by-name "test.txt" (files-in-directory tu/test-resources-dir)))
-    (is (= 3 (count (files-in-directory tu/test-resources-dir)))))
+    (is (= 4 (count (files-in-directory tu/test-resources-dir)))))
   (testing "files-in-directory returns empty list when there are no files of the specified file type"
     (is (empty? (files-in-directory tu/test-resources-dir #{".clj"}))))
   (testing "files-in-directory return a list of files of the specified file type"

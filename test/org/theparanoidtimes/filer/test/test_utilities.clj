@@ -8,6 +8,10 @@
   [file-name]
   (str test-dir "/" file-name))
 
+(defn r
+  [file-name]
+  (str test-resources-dir "/" file-name))
+
 (defn file-seq-contains-by-name
   [name col]
   (some #(.contains (.getName %) name) col))
