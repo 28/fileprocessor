@@ -9,7 +9,7 @@
   (let [fs (slurp f)
         fr (st/replace fs old-pattern new-pattern)]
     (when (not= fs fr)
-      (with-open [out (io/writer f :append false)]
+      (with-open [out (io/writer f :append false :encoding "UTF-8")]
         (.write out fr)))))
 
 (defn replace-text-in-files

@@ -1,5 +1,6 @@
 (ns org.theparanoidtimes.filer.xml.xml-utils
-  (:require [clojure.data.xml :as dxml]))
+  (:require [clojure.data.xml :as dxml]
+            [clojure.java.io :as io]))
 
 (defn load-xml
   "Loads a XML file and returns a map representing the XML tree."
@@ -10,5 +11,5 @@
   "Spits xml tree map to file."
   [xml-map xml-file-name]
   (with-open
-    [fw (java.io.FileWriter. xml-file-name)]
+    [fw (io/writer (io/file xml-file-name) :append false :encoding "UTF-8")]
     (dxml/emit xml-map fw)))
