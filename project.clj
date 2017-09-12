@@ -11,5 +11,5 @@
   :aot [org.theparanoidtimes.filer.html.html-assertion-helpers]
   :uberjar-name "filer-standalone-0.1.0.jar"
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [enlive "1.1.5"]
+                 [enlive "1.1.6"]
                  [org.clojure/data.xml "0.0.8"]])
