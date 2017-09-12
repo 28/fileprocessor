@@ -4,7 +4,6 @@
                 of various files and file types."
   :license {:name "The MIT License"
             :url  "https://opensource.org/licenses/MIT"}
-  :plugins [[lein-cljfmt "0.3.0"]]
   :profiles {:dev
              {:source-paths ["dev"]}}
   :repl-options {:prompt  (fn [ns] (str "[" ns "] $ "))
