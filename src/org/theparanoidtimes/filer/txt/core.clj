@@ -1,7 +1,10 @@
-(ns org.theparanoidtimes.filer.raw-file-processor
+(ns org.theparanoidtimes.filer.txt.core
   (:require [clojure.string :as st]
             [org.theparanoidtimes.filer.directory-processor :as dir]
             [clojure.java.io :as io]))
+
+
+;; Content modification
 
 (defn replace-text-in-file
   ""
@@ -36,6 +39,9 @@
   [directory-path new-pattern & file-types]
   (doseq [f (dir/files-in-directory directory-path file-types)]
     (replace-whole-text-in-file f new-pattern)))
+
+
+;; File generation
 
 (defn generate-files-from-names-list
   "Generates as many files as there are lines in name-list file.

@@ -1,6 +1,6 @@
-(ns org.theparanoidtimes.filer.test.raw-file-processor-test
+(ns org.theparanoidtimes.filer.test.txt-test
   (:require [clojure.test :refer :all]
-            [org.theparanoidtimes.filer.raw-file-processor :refer :all]
+            [org.theparanoidtimes.filer.txt.core :refer :all]
             [org.theparanoidtimes.filer.test.test-utilities :as tu]
             [org.theparanoidtimes.filer.directory-processor :as dir]
             [clojure.java.io :as io]))
@@ -19,7 +19,7 @@
     (replace-whole-text-in-file (io/file (tu/f "r.txt")) "REPLACED")
     (is (= "REPLACED" (slurp (io/file (tu/f "r.txt")))))))
 
-(deftest genreate-files-test
+(deftest generate-files-test
   (testing "generating-files"
     (generate-n-files (tu/f "f") 3 ".e" "dummy")
     (is (= 3 (count (dir/files-in-directory tu/test-dir))))
