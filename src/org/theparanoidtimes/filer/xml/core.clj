@@ -1,9 +1,10 @@
-(ns org.theparanoidtimes.filer.xml.xml-processor
-  (:require [org.theparanoidtimes.filer.xml.xml-utils :refer :all])
+(ns org.theparanoidtimes.filer.xml.core
+  (:require [clojure.java.io :as io]
+            [clojure.data.xml :as xml])
   (:import (javax.xml XMLConstants)
            (javax.xml.transform.stream StreamSource)
            (javax.xml.validation SchemaFactory)
-           (java.io File)))
+           (java.io File FileReader)))
 
 (defn validate-xml-against-xsd
   "Validates given XML to given XSD schema, returns true if XML is valid,
@@ -17,3 +18,15 @@
       (.validate validator source-file)
       true
       (catch Exception _ false))))
+
+(defn load-xml
+  "Loads a XML file and returns a map representing the XML tree."
+  [^File xml-file]
+  (xml/parse (FileReader. xml-file)))
+
+(defn xml-map-to-file
+  "Spits xml tree map to file."
+  [xml-map xml-file-name]
+  (with-open
+    [fw (io/writer (io/file xml-file-name) :append false :encoding "UTF-8")]
+    (xml/emit xml-map fw)))

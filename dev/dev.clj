@@ -9,8 +9,7 @@
             [org.theparanoidtimes.filer.html.html-processor :refer :all]
             [org.theparanoidtimes.filer.html.html-assertion-helpers :refer :all]
             [org.theparanoidtimes.filer.html.html-utils :refer :all]
-            [org.theparanoidtimes.filer.xml.xml-processor :refer :all]
-            [org.theparanoidtimes.filer.xml.xml-utils :refer :all]))
+            [org.theparanoidtimes.filer.xml.core :refer :all]))
 
 (defonce test-dir (io/file "test/resources"))
 (defonce test-html (io/file "test/resources/test.html"))
