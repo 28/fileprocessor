@@ -1,9 +1,11 @@
 (defproject filer "0.1.0"
-  :url "https://github.com/theparanoidtimes/filer"
-  :description "The idea of the filer project is to do batch processing
-                of various files and file types."
-  :license {:name "The MIT License"
-            :url  "https://opensource.org/licenses/MIT"}
+  :url "http://theparanoidtimes.org/projects/filer"
+  :description "A library of various file manipulation function that strive to
+                be highly reusable."
+  :license {:name         "The MIT License"
+            :distribution :repo
+            :url          "https://opensource.org/licenses/MIT"}
+  :min-lein-version "2.0.0"
   :profiles {:dev
              {:source-paths ["dev"]}}
   :repl-options {:prompt  (fn [ns] (str "[" ns "] $ "))
