@@ -1,6 +1,6 @@
 (ns org.theparanoidtimes.filer.directory-processor
   (:require [clojure.java.io :as io :only [file]]
-            [org.theparanoidtimes.filer.utils :as u]))
+            [org.theparanoidtimes.filer.util :as u]))
 
 (defn files-in-directory
   "Returns a lazy seq of all files in given directory. It also

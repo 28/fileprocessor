@@ -3,7 +3,7 @@
             [clojure.pprint :refer (pprint)]
             [clojure.java.io :as io]
             [clojure.string :as s]
-            [org.theparanoidtimes.filer.utils :refer :all]
+            [org.theparanoidtimes.filer.util :refer :all]
             [org.theparanoidtimes.filer.directory-processor :refer :all]
             [org.theparanoidtimes.filer.raw-file-processor :refer :all]
             [org.theparanoidtimes.filer.html.html-processor :refer :all]

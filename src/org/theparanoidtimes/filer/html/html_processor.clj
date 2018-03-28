@@ -1,6 +1,6 @@
 (ns org.theparanoidtimes.filer.html.html-processor
   (:require [net.cgrand.enlive-html :as h]
-            [org.theparanoidtimes.filer.utils :refer :all]
+            [org.theparanoidtimes.filer.util :refer :all]
             [org.theparanoidtimes.filer.html.html-utils :refer :all]))
 
 (defn get-tags
@@ -20,3 +20,13 @@
     (map function (first-n first (get-tags html node)))
     :else
     (apply function `(~(nth (get-tags html node) (dec n))))))
+
+(defn first-n
+  "If value is nil returns all elements of the collection otherwise returns
+   that much elements. This is not true for collections with more elements
+   than Long/MAX_VALUE and infinite collections."
+  [value coll]
+  (take
+    (if (nil? value)
+      Long/MAX_VALUE
+      value) coll))
