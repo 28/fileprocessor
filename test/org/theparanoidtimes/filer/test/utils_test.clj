@@ -1,4 +1,4 @@
-(ns org.theparanoidtimes.filer.utils-test
+(ns org.theparanoidtimes.filer.test.utils-test
   (:require [clojure.test :refer :all]
             [org.theparanoidtimes.filer.utils :refer :all])
   (:import [java.io File]))

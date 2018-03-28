@@ -43,9 +43,9 @@
    function must accept only one arg and return a String representing
    the name of the individual file. Init-text for all files can be provided."
   [name-list-location name-decorator-fn init-text]
-  (with-open [reader (clojure.java.io/reader name-list-location)]
-    (doseq [l (line-seq reader)]
-      (spit (name-decorator-fn l) init-text))))
+  (with-open [reader (io/reader name-list-location)]
+    (doseq [name (line-seq reader)]
+      (spit (name-decorator-fn name) init-text))))
 
 (defn generate-n-files
   "Generates n files with '<prefix><index>' as name and with

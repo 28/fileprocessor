@@ -1,4 +1,4 @@
-(ns org.theparanoidtimes.filer.xml-processor-test
+(ns org.theparanoidtimes.filer.test.xml-processor-test
   (:require [org.theparanoidtimes.filer.xml.xml-processor :refer :all]
             [clojure.test :refer :all]
             [clojure.java.io :as io]

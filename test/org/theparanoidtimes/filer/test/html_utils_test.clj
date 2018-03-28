@@ -1,4 +1,4 @@
-(ns org.theparanoidtimes.filer.html_utils_test
+(ns org.theparanoidtimes.filer.test.html_utils_test
   (:require [clojure.test :refer :all]
             [org.theparanoidtimes.filer.html.html-utils :refer :all]))
 

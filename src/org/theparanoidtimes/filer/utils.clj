@@ -3,7 +3,7 @@
 
 (defn file-type
   "Returns a string that represents the type of the file
-   as extention with dot (example: from test.txt returns
+   as extension with dot (example: from test.txt returns
    .txt)."
   [^File f]
   (let [file-name (.getName f)
@@ -18,6 +18,6 @@
    than Long/MAX_VALUE and infinite collections."
   [value coll]
   (take
-   (if (nil? value)
-     Long/MAX_VALUE
-     value) coll))
+    (if (nil? value)
+      Long/MAX_VALUE
+      value) coll))

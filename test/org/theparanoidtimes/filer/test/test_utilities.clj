@@ -2,7 +2,7 @@
   (:import (java.io File)))
 
 (def test-resources-dir "./test/resources")
-(def test-dir "./_test")
+(def ^String test-dir "./_test")
 
 (defn f
   [file-name]

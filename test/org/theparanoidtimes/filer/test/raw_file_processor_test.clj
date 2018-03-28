@@ -1,4 +1,4 @@
-(ns org.theparanoidtimes.filer.raw-file-processor-test
+(ns org.theparanoidtimes.filer.test.raw-file-processor-test
   (:require [clojure.test :refer :all]
             [org.theparanoidtimes.filer.raw-file-processor :refer :all]
             [org.theparanoidtimes.filer.test.test-utilities :as tu]

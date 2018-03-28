@@ -12,10 +12,10 @@
   ([directory-path file-types]
    (filter (partial (fn [coll f]
                       (or
-                       (empty? coll)
-                       (some #(and
-                               (not (.isDirectory f))
-                               (= (u/file-type f) %)) coll))) file-types)
+                        (empty? coll)
+                        (some #(and
+                                 (not (.isDirectory f))
+                                 (= (u/file-type f) %)) coll))) file-types)
            (file-seq (io/file directory-path)))))
 
 (defn generate-n-directories
