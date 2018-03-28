@@ -6,6 +6,9 @@
            (javax.xml.validation SchemaFactory)
            (java.io File FileReader)))
 
+
+;; XSD schema validation
+
 (defn validate-xml-against-xsd
   "Validates given XML to given XSD schema, returns true if XML is valid,
    false otherwise."
@@ -18,6 +21,9 @@
       (.validate validator source-file)
       true
       (catch Exception _ false))))
+
+
+;; Util
 
 (defn load-xml
   "Loads a XML file and returns a map representing the XML tree."

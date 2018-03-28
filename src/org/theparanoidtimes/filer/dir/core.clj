@@ -1,6 +1,9 @@
-(ns org.theparanoidtimes.filer.directory-processor
+(ns org.theparanoidtimes.filer.dir.core
   (:require [clojure.java.io :as io :only [file]]
             [org.theparanoidtimes.filer.util :as u]))
+
+
+;; Querying
 
 (defn files-in-directory
   "Returns a lazy seq of all files in given directory. It also
@@ -17,6 +20,9 @@
                                  (not (.isDirectory f))
                                  (= (u/file-type f) %)) coll))) file-types)
            (file-seq (io/file directory-path)))))
+
+
+;; Directory generation
 
 (defn generate-n-directories
   "Generates n directories with names comforting the

@@ -1,6 +1,6 @@
 (ns org.theparanoidtimes.filer.txt.core
   (:require [clojure.string :as st]
-            [org.theparanoidtimes.filer.directory-processor :as dir]
+            [org.theparanoidtimes.filer.dir.core :as dir]
             [clojure.java.io :as io]))
 
 

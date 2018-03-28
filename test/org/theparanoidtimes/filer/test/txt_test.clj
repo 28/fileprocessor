@@ -2,7 +2,7 @@
   (:require [clojure.test :refer :all]
             [org.theparanoidtimes.filer.txt.core :refer :all]
             [org.theparanoidtimes.filer.test.test-utilities :as tu]
-            [org.theparanoidtimes.filer.directory-processor :as dir]
+            [org.theparanoidtimes.filer.dir.core :as dir]
             [clojure.java.io :as io]))
 
 (use-fixtures :each tu/with-test-folder)

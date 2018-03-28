@@ -1,6 +1,6 @@
-(ns org.theparanoidtimes.filer.test.directory-processor-test
+(ns org.theparanoidtimes.filer.test.dir-test
   (:require [clojure.test :refer :all]
-            [org.theparanoidtimes.filer.directory-processor :refer :all]
+            [org.theparanoidtimes.filer.dir.core :refer :all]
             [org.theparanoidtimes.filer.test.test-utilities :as tu]
             [clojure.java.io :as io]))
 
