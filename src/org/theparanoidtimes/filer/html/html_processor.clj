@@ -8,6 +8,16 @@
   [res node]
   (h/select (to-res res) (to-enlive-selector node)))
 
+(defn first-n
+  "If value is nil returns all elements of the collection otherwise returns
+   that much elements. This is not true for collections with more elements
+   than Long/MAX_VALUE and infinite collections."
+  [value coll]
+  (take
+    (if (nil? value)
+      Long/MAX_VALUE
+      value) coll))
+
 (defn assert-select
   "HTML tag assertion."
   [html node function & {:keys [first n] :or {first nil}}]
@@ -20,13 +30,3 @@
     (map function (first-n first (get-tags html node)))
     :else
     (apply function `(~(nth (get-tags html node) (dec n))))))
-
-(defn first-n
-  "If value is nil returns all elements of the collection otherwise returns
-   that much elements. This is not true for collections with more elements
-   than Long/MAX_VALUE and infinite collections."
-  [value coll]
-  (take
-    (if (nil? value)
-      Long/MAX_VALUE
-      value) coll))

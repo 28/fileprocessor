@@ -4,12 +4,12 @@
             [clojure.java.io :as io]
             [clojure.string :as s]
             [org.theparanoidtimes.filer.util :refer :all]
-            [org.theparanoidtimes.filer.directory-processor :refer :all]
-            [org.theparanoidtimes.filer.raw-file-processor :refer :all]
+            [org.theparanoidtimes.filer.dir.core :refer :all]
+            [org.theparanoidtimes.filer.txt.core :refer :all]
+            [org.theparanoidtimes.filer.xml.core :refer :all]
             [org.theparanoidtimes.filer.html.html-processor :refer :all]
             [org.theparanoidtimes.filer.html.html-assertion-helpers :refer :all]
-            [org.theparanoidtimes.filer.html.html-utils :refer :all]
-            [org.theparanoidtimes.filer.xml.core :refer :all]))
+            [org.theparanoidtimes.filer.html.html-utils :refer :all]))
 
 (defonce test-dir (io/file "test/resources"))
 (defonce test-html (io/file "test/resources/test.html"))
