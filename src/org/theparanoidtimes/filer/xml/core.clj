@@ -10,8 +10,8 @@
 ;; XSD schema validation
 
 (defn validate-xml-against-xsd
-  "Validates given XML to given XSD schema, returns true if XML is valid,
-   false otherwise."
+  "Validates given XML to given XSD schema, returns true if XML is valid, false
+   otherwise."
   [^File xml-file ^File xsd-file]
   (let [source-file (StreamSource. xml-file)
         schema-factory (SchemaFactory/newInstance XMLConstants/W3C_XML_SCHEMA_NS_URI)
