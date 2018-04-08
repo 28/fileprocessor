@@ -11,8 +11,8 @@
             [org.theparanoidtimes.filer.html.html-assertion-helpers :refer :all]
             [org.theparanoidtimes.filer.html.html-utils :refer :all]))
 
-(defonce test-dir (io/file "test/resources"))
-(defonce test-html (io/file "test/resources/test.html"))
-(defonce test-txt (io/file "test/resources/test.txt"))
-(defonce test-xml (io/file "test/resources/test.xml"))
-(defonce test-xml-schema (io/file "test/resources/test-schema.xsd"))
+(def test-dir (io/file "./test/resources"))
+(def test-html (io/file "./test/resources/test.html"))
+(def test-txt (io/file "./test/resources/test.txt"))
+(def test-xml (io/file "./test/resources/test.xml"))
+(def test-xsd (io/file "./test/resources/test-schema.xsd"))

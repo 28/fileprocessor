@@ -8,8 +8,10 @@
   :min-lein-version "2.0.0"
   :profiles {:dev
              {:source-paths ["dev"]}}
-  :repl-options {:prompt  (fn [ns] (str "[" ns "] $ "))
-                 :init-ns dev}
+  :repl-options {:prompt  (fn [ns] (str "[" ns "] τπτ=> "))
+                 :welcome (do (println "Evaluate (dev) to load the development namespace which has all namespaces loaded.")
+                              (println "There are vars that can be used for dev/testing: test-dir, test-html, test-txt, test-xml and test-xsd."))
+                 :init-ns user}
   :aot [org.theparanoidtimes.filer.html.html-assertion-helpers]
   :uberjar-name "filer-standalone-0.1.0.jar"
   :dependencies [[org.clojure/clojure "1.9.0"]
