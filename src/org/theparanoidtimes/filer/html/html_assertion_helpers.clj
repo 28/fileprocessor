@@ -1,5 +1,5 @@
 (ns org.theparanoidtimes.filer.html.html-assertion-helpers
-  (:require [org.theparanoidtimes.filer.html.html-processor :refer :all]))
+  (:require [org.theparanoidtimes.filer.html.core :refer :all]))
 
 ;; Java interfaces and classes to generate
 
@@ -25,20 +25,19 @@
   "Asserts if all selected nodes have the content
    equal to the passed content."
   [html node content]
-  (assert-select html node #(= (first (:content %)) content)))
+  (assert-select html node (content=? content)))
 
 (defn assert-nth-node-content-is-equal
   "Asserts if the selected node on the specified location has
    the content equal to the passed content."
   [html node content location]
-  (assert-select html node #(= (first (:content %)) content) :n location))
+  (assert-select html node (content=? content) {:n location}))
 
 (defn assert-node-attribute-value
   "Asserts if the selected nodes have a specific attribute with
    the specific value."
   [html node attribute value]
-  (let [kwd (keyword attribute)]
-    (assert-select html node #(= (->> % :attrs kwd) value))))
+  (assert-select html node (attributes-contain? attribute value)))
 
 ;; Java
 
@@ -57,7 +56,7 @@
   [^Object html ^String node ^String attribute ^String value]
   (assert-node-attribute-value html node attribute value))
 
-(defn java-assertOnSpecificNodeContent
+#_(defn java-assertOnSpecificNodeContent
   ""
   [^Object html ^String node ^Integer location ^org.theparanoidtimes.filer.NodeContentProcessingInstruction instruction]
   (assert-select html node
