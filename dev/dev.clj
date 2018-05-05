@@ -8,7 +8,8 @@
             [org.theparanoidtimes.filer.dir.core :refer :all]
             [org.theparanoidtimes.filer.txt.core :refer :all]
             [org.theparanoidtimes.filer.xml.core :refer :all]
-            [org.theparanoidtimes.filer.html.core :refer :all]))
+            [org.theparanoidtimes.filer.html.core :refer :all]
+            [org.theparanoidtimes.filer.html.assertion :refer :all]))
 
 (def test-dir  (io/file "./test/resources"))
 (def test-html (io/file "./test/resources/test.html"))

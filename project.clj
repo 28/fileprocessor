@@ -12,7 +12,7 @@
                  :welcome (do (println "Evaluate (dev) to load the development namespace which has all namespaces loaded.")
                               (println "There are vars that can be used for dev/testing: test-dir, test-html, test-txt, test-xml and test-xsd."))
                  :init-ns user}
-  :aot [org.theparanoidtimes.filer.html.html-assertion-helpers]
+  :aot [org.theparanoidtimes.filer.html.assertion]
   :uberjar-name "filer-standalone-0.1.0.jar"
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [enlive "1.1.6"]
