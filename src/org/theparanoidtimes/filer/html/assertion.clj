@@ -1,5 +1,6 @@
 (ns org.theparanoidtimes.filer.html.assertion
-  (:require [org.theparanoidtimes.filer.html.core :refer :all]))
+  (:require [org.theparanoidtimes.filer.html.core :refer :all])
+  (:import (java.util.regex Pattern)))
 
 
 ;; Java interfaces and classes
@@ -17,6 +18,7 @@
   :prefix "java-"
   :methods [^:static [assertNodeContentIsEqual [Object String String] Boolean]
             ^:static [assertNthNodeContentIsEqual [Object String String Integer] Boolean]
+            ^:static [assertNodeContentMatches [Object String java.util.regex.Pattern] Boolean]
             ^:static [assertNodeAttributeValue [Object String String String] Boolean]
             ^:static [assertLinkNameIsEqual [Object String String] Boolean]
             ^:static [assertLinkTargetIsEqual [Object String String] Boolean]
@@ -38,6 +40,11 @@
    to the passed content."
   [html node content location]
   (assert-select html node (content=? content) {:n location}))
+
+(defn assert-node-content-matches
+  "Asserts if the selected node's content matches the passed regex."
+  [html node re]
+  (assert-select html node (content-matches? re)))
 
 (defn assert-node-attribute-value
   "Asserts if the selected nodes have a specific attribute with the specific
@@ -87,6 +94,11 @@
   [^Object html ^String node ^String content ^Integer order]
   (assert-nth-node-content-is-equal html (to-selector-vec node) content order))
 
+(defn java-assertNodeContentMatches
+  "Java interop assert-node-content-matches function wrapper."
+  [^Object html ^String node ^Pattern re]
+  (assert-node-content-matches html (to-selector-vec node) re))
+
 (defn java-assertNodeAttributeValue
   "Java interop assert-node-attribute-value function wrapper."
   [^Object html ^String node ^String attribute ^String value]
@@ -114,10 +126,13 @@
 
 (defn java-assertImageAsLinkIsEqual
   "Jva interop assert-img-as-link-is-equal function wrapper."
-  [^Object html ^String node ^String href ^String src]
+  [^Object html ^String node ^String src ^String href]
   (assert-img-as-link-is-equal html (to-selector-vec node) src href))
 
 (defn java-assertOnNodeContent
-  ""
+  "Generic node content comparison Java interop method. Accepts a instance of
+   NodeContentAssertionInstruction which is used for content comparison. Content
+   is provided to the assertOnContent method as a String."
   [^Object html ^String node ^org.theparanoidtimes.filer.html.assertion.NodeContentAssertionInstruction instruction]
-  #_(assert-select html node (fn [node] (.assertOnContent instruction (-> node :content filter-content first)))))
+  (assert-select html (to-selector-vec node)
+                 (fn [node] (.assertOnContent instruction (-> node :content filter-content first str)))))

@@ -66,6 +66,19 @@
         first
         (= c))))
 
+(defn content-matches?
+  "Returns a function that takes a node. Asserts if the node content matches
+   the passed regex. The content being asserted is filtered. See also -
+   filter-content."
+  [m]
+  (fn [node]
+    (->> node
+         :content
+         filter-content
+         first
+         (re-matches m)
+         (#(not (nil? %))))))
+
 (defn attributes-contain?
   "Returns a function that takes a node. Asserts if the node has passed
    key/value pair in its attribute map."
@@ -73,7 +86,7 @@
   (fn [node]
     (-> node
         (get :attrs)
-        (get key)
+        (get (keyword key))
         (= value))))
 
 (defn link-name=?

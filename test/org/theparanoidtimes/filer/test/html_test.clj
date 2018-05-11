@@ -24,7 +24,15 @@
 
 (deftest html-node-content-assertion-test
   (testing "node content is equal"
-    (is (true? (assert-select f [:div#top :> :header :> :h1] (content=? "HTML5 Test Page"))))))
+    (is (true? (assert-select f [:div#top :> :header :> :h1] (content=? "HTML5 Test Page")))))
+  (testing "node content matches"
+    (is (true? (assert-select f [:div#top :> :header :> :p] (content-matches? #"[a-zA-Z\s.]+"))))))
+
+(deftest html-assert-on-multiple-nodes-test
+  (testing "specific node's in order content is equal"
+    (is (true? (assert-select f [:h1] (content=? "HTML5 Test Page") {:n 0}))))
+  (testing "assert on multiple nodes' content equality"
+    (is (true? (assert-select f [:li] (complement (content=? "")))))))
 
 (deftest html-node-attributes-assertion-test
   (testing "attributes map contains key value pair"
