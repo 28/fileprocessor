@@ -1,48 +1,133 @@
 # filer
 
-The main motivation for this library is to have various file processing functionalities
-in one place. Word "file" means HTML, XML, text or any other file type. It also means
-directories.
+*filer* is a library that aims to contain a bunch of useful file IO functions in
+one place. The functions are mostly related to bulk operations such as bulk
+content modification, bulk generation and bulk assertion.
+
+There are different namespaces for different file types, but of course some
+functions can be used on file types other than the one defined by the namespace
+name. `dir.core` has functions for directory manipulation. `txt.core` has
+functions for text file generation and modification. Namespace `xml.core`
+currently has only one function that performs a XML file validity check against
+an XSD file. Finally, `html.code` namespace focuses on assertion upon HTML file
+structure and content.
+
+#### `html.core` namespace
+
+This namespace was created with a specific role in mind - HTML content and
+structure assertion. The domain where this idea arose is mass mailing systems.
+There is a need to check the output e-mail's structure and content during
+testing in order to be sure that the perfect presentation arrives to the
+destination.
+
+The idea for the shape of the functions is inspired by this *Ruby on Rails*
+[method](https://apidock.com/rails/ActionDispatch/Assertions/SelectorAssertions/assert_select).
 
 ## Usage
 
-For directory processing use functions from
-`org.theparanoidtimes.filer.directory-processor` namespace.
+### `dir.core`
 
-For raw/text file processing use functions from
-`org.theparanoidtimes.filer.raw-file-processor` namespace.
+```clojure
+(require '[org.theparanoidtimes.filer.dir.core :as dir])
+=> nil
 
-For XML file processing use functions from
-`org.theparanoidtimes.filer.xml-processor` namespace.
+(def test-dir "/test-dir/")
+=> #'user/test-dir
 
-For HTML file processing use functions from
-`org.theparanoidtimes.filer.html.html-processor` and
-`org.theparanoidtimes.filer.html.html-assertion-helpers`
-namespaces.
+;; Takes a directory name prefix and a number of directories that should be
+;; generated. Outputted directories have names '/test-dit/t0', '/test-dit/t1'.
+(dir/generate-n-directories (str test-dir "t") 2)
+=> nil
 
-In the later library has helper methods that provide Java interop that should feel
-like native Java coding. Generated uberjar should be imported in the Java project and
-used like any other Java 3rd party library
+;; Takes a directory name and returns a seq of all files in it. Returns files
+;; from nested directories, but not the directories themselves.
+(dir/files-in-directory test-dir)
+=>
+(#object[java.io.File 0x5e24856c "/test-dir/1/1one.txt"]
+ #object[java.io.File 0x3330c88a "/test-dir/one.txt"]
+ #object[java.io.File 0x2606def2 "/test-dir/three.html"]
+ #object[java.io.File 0x62d732f9 "/test-dir/two.xml"])
 
-**Detailed usage documentation TBD**
+;; Can also take a set of file extensions and then return files only of the
+;; specified type/s.
+(dir/files-in-directory test-dir #{".txt"})
+=>
+(#object[java.io.File 0x5772de8a "/test-dir/1one.txt"]
+ #object[java.io.File 0x8701197 "/test-dir/one.txt"])
+```
 
-## Idea
+### `txt.core`
 
-The idea for this library came up after compiling all the various scripts
-that have been used for various task and that were lying around the work space. The Java
-interop part came from the request to use this library's HTML assertion methods from
-Java code without even knowing that the jar is actually a Clojure jar.
+```clojure
+(require '[org.theparanoidtimes.filer.txt.core :as txt])
+=> nil
 
-### HTML assertion idea
+;; Takes a prefix, a number of files to generate, a file extension and the
+;; initial text of the generated files. Outputted files have names
+;; /test-dir/t0.txt' and '/test-dir/t1.txt'.
+(txt/generate-n-files (str test-dir "t") 2 ".txt" "Test")
+=> nil
 
-The HTML assertion function and everything related to it was inspired by
-Ruby on Rails feature of the same name. See following links:
+;; Files generated...
+(dir/files-in-directory test-dir)
+=>
+(#object[java.io.File 0x65598480 "/test-dir/t0.txt"]
+ #object[java.io.File 0x3ed5dd8f "/test-dir/t1.txt"])
 
-[assert_select in Rails API](http://apidock.com/rails/ActionDispatch/Assertions/SelectorAssertions/assert_select)
+;; Takes a file, string to replace and string for replacement and replaces
+;; all occurrences in the file.
+(txt/replace-text-in-file (io/file "/test-dir/t0.txt") "T" "t")
+=> nil
 
-and
+;; The text in the file is changed...
+(slurp (io/file "/test-dir/t0.txt"))
+=> "test"
 
-[assert_select source](https://github.com/rails/rails-dom-testing/blob/0500ae5593a0fa79bb8052ae1c4474960a81440c/lib/rails/dom/testing/assertions/selector_assertions.rb)
+;; Takes a file and a string for replacement and replaces the whole text in the
+;; file with it.
+(txt/replace-whole-text-in-file (io/file "/test-dir/t0.txt") "changed")
+=> nil
+
+;; The text in the file is changed...
+(slurp (io/file "/test-dir/t0.txt"))
+=> "changed"
+
+;; A alternative of the replace-text-in-file for multiple files. Replaces all
+;; occurrences in all files. Can take a file extensions set.
+(txt/replace-text-in-files test-dir "T" "t")
+=> nil
+
+;; A alternative of the replace-whole-text-in-file for multiple files. Can take
+;; a file extensions set.
+(txt/replace-whole-text-in-files test-dir "changed")
+=> nil
+
+;; A special case function that generates files for each line of the provided
+;; names list file. Each line is a input to a name decorator function. The
+;; output of the function is the name of the generated file.
+(txt/generate-files-from-names-list (str test-dir "names") s/upper-case "Test")
+=> nil
+```
+
+### `xml.core`
+
+```clojure
+(require '[org.theparanoidtimes.filer.xml.core :as xml])
+=> nil
+
+;; Validates the given xml file against the xsd file.
+(xml/validate-xml-against-xsd xml-file xsd-file)
+=> true
+```
+
+### `html.core`
+
+```clojure
+(require '[org.theparanoidtimes.filer.html.core :as html])
+=> nil
+
+TBD
+```
 
 ## License
 
@@ -67,4 +152,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
