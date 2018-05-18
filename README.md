@@ -74,12 +74,12 @@ The idea for the shape of the functions is inspired by this *Ruby on Rails*
 (#object[java.io.File 0x65598480 "/test-dir/t0.txt"]
  #object[java.io.File 0x3ed5dd8f "/test-dir/t1.txt"])
 
-;; Takes a file, string to replace and string for replacement and replaces
+;; Takes a file, a string to replace and a string for replacement and replaces
 ;; all occurrences in the file.
 (txt/replace-text-in-file (io/file "/test-dir/t0.txt") "T" "t")
 => nil
 
-;; The text in the file is changed...
+;; Text in the file is changed...
 (slurp (io/file "/test-dir/t0.txt"))
 => "test"
 
@@ -88,22 +88,22 @@ The idea for the shape of the functions is inspired by this *Ruby on Rails*
 (txt/replace-whole-text-in-file (io/file "/test-dir/t0.txt") "changed")
 => nil
 
-;; The text in the file is changed...
+;; Text in the file is changed...
 (slurp (io/file "/test-dir/t0.txt"))
 => "changed"
 
-;; A alternative of the replace-text-in-file for multiple files. Replaces all
+;; Alternative to the replace-text-in-file function for multiple files. Replaces all
 ;; occurrences in all files. Can take a file extensions set.
 (txt/replace-text-in-files test-dir "T" "t")
 => nil
 
-;; A alternative of the replace-whole-text-in-file for multiple files. Can take
+;; Alternative to the replace-whole-text-in-file function for multiple files. Can take
 ;; a file extensions set.
 (txt/replace-whole-text-in-files test-dir "changed")
 => nil
 
 ;; A special case function that generates files for each line of the provided
-;; names list file. Each line is a input to a name decorator function. The
+;; names list file. Each line is an input to the name decorator function. The
 ;; output of the function is the name of the generated file.
 (txt/generate-files-from-names-list (str test-dir "names") s/upper-case "Test")
 => nil
