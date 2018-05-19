@@ -147,7 +147,7 @@ on *enlive* library's GitHub page for more info.
  <h1>My First Heading</h1>
  <a href="#">Home</a>
  </body>
- </html>
+ </html>"
 
 ;; Try to assert if h1 content is string, but it fails.
 (html/assert-select test-html [:h1] string?)
