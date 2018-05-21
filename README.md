@@ -178,6 +178,9 @@ on *enlive* library's GitHub page for more info.
 => true
 ```
 
+For more details check the source code of the namespace and of the tests. Also
+there are more examples on the project [page](http://theparanoidtimes.org/projects/filer).
+
 ## License
 
 MIT License
