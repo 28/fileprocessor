@@ -1,5 +1,7 @@
 # filer
 
+[![Build Status](https://travis-ci.org/theparanoidtimes/filer.svg?branch=master)](https://travis-ci.org/theparanoidtimes/filer)
+
 *filer* is a library that aims to contain a bunch of useful file IO functions in
 one place. The functions are mostly related to bulk operations such as bulk
 content modification, bulk generation and bulk assertion.
