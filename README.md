@@ -183,6 +183,12 @@ on *enlive* library's GitHub page for more info.
 For more details check the source code of the namespace and of the tests. Also
 there are more examples on the project [page](http://theparanoidtimes.org/projects/filer).
 
+There is another namespace regarding HTML assertion - `org.theparanoidtimes.filer.html.assertion`
+that contains wrapper functions that are used for a Java interop feature.
+[This](/java/FilerMain.java) file is a sample of how *filer* functions can
+seamlessly be called from Java. There is a [blog post](http://theparanoidtimes.org/blog/2018/06/09/hidden-in-plain-java/)
+explaining it in detail.
+
 ## License
 
 MIT License
